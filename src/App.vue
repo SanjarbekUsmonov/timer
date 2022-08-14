@@ -1,16 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Ninja Reaction Timer</h1>
+  <button @click="start">play</button>
+  <CompBlock v-if="isPlaying"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CompBlock from './components/CompBlock';
+
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { CompBlock },
+  data() {
+    return {
+      isPlaying: false,
+      delay: null
+    }
+  },
+  methods: {
+    start(){
+      this.delay  = 2000 + Math.random() * 5000
+      this.isPlaying = true
+    }
+  },
 }
 </script>
 
